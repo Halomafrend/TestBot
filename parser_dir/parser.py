@@ -1,6 +1,5 @@
 import requests
-from data_base import database
-import asyncio
+
 
 HEADERS = {'accept': '*/*',
            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
