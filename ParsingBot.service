@@ -1,0 +1,14 @@
+[Unit]
+Description=My newbot
+After=network.target
+ 
+[Service]
+User=jankins
+Group=jankins
+ 
+WorkingDirectory=/home/jankins/TestBot/
+Environment="PYTHONPATH=/home/jankins/TestBot/"
+ExecStart=/home/jankins/TestBot/.venv/bin/python /home/jankins/TestBot/ParsingBot.py
+ 
+[Install]
+WantedBy=multi-user.target
