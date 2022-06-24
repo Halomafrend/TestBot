@@ -1,5 +1,7 @@
 import requests
 import logging
+from fake_useragent import UserAgent
+
 Log_Format = "%(levelname)s %(asctime)s - %(message)s"
 
 logging.basicConfig(filename = "logfile.log",
@@ -9,13 +11,9 @@ logging.basicConfig(filename = "logfile.log",
 
 logger = logging.getLogger()
 
-#Testing our Logger
-
-logger.error("Our First Log Message")
 
 HEADERS = {
-    "Accept": "application/json",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+    "User-Agent": UserAgent().chrome
   }
 
 

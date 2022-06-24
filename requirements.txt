@@ -13,3 +13,4 @@ pytz
 requests
 urllib3
 yarl
+fake-useragent
