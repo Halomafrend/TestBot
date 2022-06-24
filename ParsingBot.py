@@ -15,7 +15,11 @@ USER_ID = [5378097032, 631390821]
 storage = MemoryStorage()
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot, storage=storage)
-logging.basicConfig(level=logging.INFO)
+
+
+
+
+
 
 global is_trace
 is_trace = False
@@ -49,7 +53,6 @@ async def get_link(message: types.Message, state: FSMContext):
     is_continue_out = parser.is_continue(message.text)
     if is_continue_out != 1 and is_continue_out != 0:
         await message.reply('Неверная ссылка')
-        await message.reply(is_continue_out)
     else:
         await database.sql_add_command(message.text)
         await message.reply('Ссылка добавлена')
