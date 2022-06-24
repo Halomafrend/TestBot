@@ -9,16 +9,11 @@ import config
 from parser_dir import parser
 from data_base import database
 from keyboards import keyboard as kb
-import logging
 
 USER_ID = [5378097032, 631390821]
 storage = MemoryStorage()
 bot = Bot(token=config.TOKEN)
 dp = Dispatcher(bot, storage=storage)
-
-
-
-
 
 
 global is_trace
@@ -50,8 +45,7 @@ async def add(message: types.Message):
 @dp.message_handler(state=FSM_add.get_link)
 async def get_link(message: types.Message, state: FSMContext):
     await message.reply('Проверяю...')
-    is_continue_out = parser.is_continue(message.text)
-    if is_continue_out != 1 and is_continue_out != 0:
+    if parser.is_continue(message.text) == 2:
         await message.reply('Неверная ссылка')
     else:
         await database.sql_add_command(message.text)
@@ -102,8 +96,6 @@ async def trace(message: types.Message):
                     for id in USER_ID:
                         await bot.send_message(id, 'Cвободно:' + link[0])
                     await database.sql_delete_command(link[0])
-                elif parser.is_continue(link[0]) != 1:
-                        await bot.send_message(63139082, parser.is_continue(link[0]))
                 # print(link[0])
                 await asyncio.sleep(1)
             await asyncio.sleep(1)
