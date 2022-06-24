@@ -19,7 +19,7 @@ def is_continue(url):
         return 1
     except Exception as ex:
         print(ex)
-        return 2
+        return ex
 
 
 
